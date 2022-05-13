@@ -1,0 +1,40 @@
+<h1>Monitora Filmova databaza (not CSFD)</h1>
+
+<form method="get" action="{{ request.get.q }}">
+  <input type="search" type="text" name="q" placeholder='Hladaj...'>
+  <button type="submit">search</button>
+</form>
+
+<table style="float: left">
+{% if movie_list %}
+    <tr>
+     <th>Filmy</th>
+    </tr>
+    <ul>
+    {% for movie in movie_list %}
+        <tr>
+        <td><a href="{% url 'movie' movie.id %}">{{ movie.title }}</a></td>
+        </tr>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No movies are available.</p>
+{% endif %}
+</table>
+
+<table style="float: right; margin-right: 50%">
+{% if actor_list %}
+    <tr>
+     <th>Herci</th>
+    </tr>
+    <ul>
+    {% for actor in actor_list %}
+        <tr>
+        <td><a href="{% url 'actor' actor.id %}">{{ actor.name }}</a></td>
+        </tr>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No movies are available.</p>
+{% endif %}
+</table>
