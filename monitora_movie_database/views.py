@@ -7,7 +7,6 @@ from django.template import loader
 def index(request):
     try:
         if len(request.GET) == 0 or request.GET.__str__().__repr__().__contains__("['']"):
-            print('nahradene')
             search = ' <None> '
         else:
             search = request.GET.get('q')
