@@ -18,7 +18,7 @@ def index(request):
         }
         return render(request, 'index.html', context)
     except Exception as e:
-        return e
+        return HttpResponseServerError(e)
 
 
 def movie(request, id):
