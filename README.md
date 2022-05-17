@@ -1,4 +1,4 @@
-# Fimova Databaza (CSFD scrap)
+# Filmova Databaza (CSFD scrap)
 
 ## HOME SITE on localhost
 http://127.0.0.1:8000/mfd/
