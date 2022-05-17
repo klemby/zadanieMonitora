@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404, HttpResponseServerError
 from .models import Movie, Actor
 
-def index(request):
+
+def index_view(request):
     try:
         if len(request.GET) == 0 or request.GET.__str__().__contains__("['']"):
             search = ' <None> '
@@ -19,7 +20,7 @@ def index(request):
         return HttpResponseServerError(e)
 
 
-def movie(request, id):
+def movie_view(request, id):
     try:
         movie = Movie.objects.get(pk=id)
         context = {
@@ -31,7 +32,7 @@ def movie(request, id):
         raise Http404('Movie does not exist')
 
 
-def actor(request, id):
+def actor_view(request, id):
     try:
         a = Actor.objects.get(pk=id)
         movies = a.movies.all()
