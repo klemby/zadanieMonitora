@@ -10,15 +10,12 @@ def index(request):
             search = ' <None> '
         else:
             search = request.GET.get('q')
-        if len(search) > 0:
-            actors = [a for a in Actor.objects.filter(name__icontains=search)]
-            movies = [m for m in Movie.objects.filter(title__icontains=search)]
-            context = {
-                'actor_list': actors,
-                'movie_list': movies
-            }
-        else:
-            return HttpResponseServerError('Internal server error')
+        actors = [a for a in Actor.objects.filter(name__icontains=search)]
+        movies = [m for m in Movie.objects.filter(title__icontains=search)]
+        context = {
+            'actor_list': actors,
+            'movie_list': movies
+        }
         return render(request, 'index.html', context)
     except Exception as e:
         return e
